@@ -1,4 +1,377 @@
-.App {
-  font-family: sans-serif;
+:root {
+  --cor-primaria: #3a8199;
+  --cor-primaria-clara: #ceeaf0;
+  --cor-cinza-10: #dbdbdb;
+  --cor-cinza-20: #c2c2c2;
+  --cor-cinza-40: #a8a8a8;
+  --cor-cinza-60: #3f3f3f;
+  --cor-cinza-70: #333333;
+  --cor-cinza-80: #292929;
+  --cor-preta: 0, 0, 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Montserrat, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--cor-cinza-70);
+}
+
+hr.divisor {
+  border: 0;
+  margin-bottom: 16px;
+  height: 2px;
+  background-color: var(--cor-cinza-10);
+}
+
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 56px;
+  margin-bottom: 24px;
+  display: flex;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 0px 16px rgba(var(--cor-preta), 0.3);
+  background: var(--cor-cinza-80);
+}
+
+.cabecalho__logo {
+  height: 18px;
+}
+
+.botao {
+  font-size: 16px;
+  color: var(--cor-primaria);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  height: 32px;
+  border: 2px solid transparent;
+  background-color: var(--cor-primaria-clara);
+  border-radius: 50px;
+  outline: 0;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+
+.botao:hover,
+.botao:focus {
+  border-color: var(--cor-primaria);
+}
+
+.botao:active {
+  position: relative;
+  top: -1px;
+}
+
+.botao_sem-fundo {
+  background-color: transparent;
+}
+
+.botao_pequeno {
+  font-size: 14px;
+}
+
+.botao_com-icone .feather {
+  margin-right: 4px;
+  height: 20px;
+  width: 20px;
+}
+
+.botao_pequeno .feather {
+  margin-right: 2px;
+  height: 16px;
+  width: 16px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.container_com-margem {
+  margin-bottom: 32px;
+}
+
+.sessao {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--cor-cinza-60);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background-color: var(--cor-cinza-80);
+}
+
+@media screen and (max-width: 832px) {
+  .container {
+    margin: 16px;
+  }
+}
+
+.sessao__cabecalho {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--cor-cinza-60);
+}
+
+.sessao__rodape {
+  padding: 16px;
+  border-top: 1px solid var(--cor-cinza-60);
+}
+
+.texto {
+  color: var(--cor-cinza-80);
+  font-size: 12px;
+}
+
+.texto_cinza {
+  color: var(--cor-cinza-10);
+}
+
+.texto_espacado {
+  letter-spacing: 2px;
+  color: #858585;
+  margin-bottom: 4px;
+}
+
+.titulo {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: var(--cor-cinza-20);
+  font-weight: 600;
+}
+
+.titulo_pequeno {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.titulo_cinza {
+  color: var(--cor-cinza-20);
+}
+
+.titulo_cor-primaria {
+  color: var(--cor-primaria);
+}
+
+.regua {
+  width: 100%;
+  position: relative;
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+
+.regua::after {
+  content: "";
+  height: 8px;
+  width: 100%;
+  display: block;
+  background-color: var(--cor-cinza-10);
+  position: absolute;
+  top: 0;
+}
+
+.regua__traco {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  height: 8px;
+  background: linear-gradient(101.67deg, #77d9cd -2.56%, #1a537c 150.55%);
+}
+
+.regua__valores {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  position: relative;
+  top: -18px;
+  color: var(--cor-cinza-10);
+}
+
+.regua__valor-dinamico {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--cor-cinza-10);
+  margin-top: 4px;
+  top: 24px;
+}
+
+.sessao__item {
+  cursor: pointer;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--cor-cinza-60);
+}
+.sessao__item:hover,
+.sessao__item:focus {
+  background-color: var(--cor-cinza-70);
+}
+
+.sessao__item:last-child {
+  margin-bottom: 0;
+}
+
+.sessao__conteudo-primario-do-item {
+  flex-grow: 1;
+  margin-right: 16px;
+}
+
+.dialogo {
+  display: none;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  max-width: 480px;
+  background-color: white;
+  position: fixed;
+  top: 0px;
+  left: auto;
+  border: 0;
+  transition: all ease 0.3s;
+  justify-content: space-between;
+  z-index: 11;
+}
+
+.dialogo__corpo {
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.dialogo__rodape {
+  display: flex;
+  padding: 16px;
+  justify-content: space-between;
+}
+
+.dialogo_aberto {
+  display: flex;
+  right: -100px;
+  -webkit-animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+}
+
+.dialogo::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario label {
+  margin-bottom: 4px;
+}
+
+.formulario input,
+.formulario textarea,
+.formulario select {
+  border: 2px solid var(--cor-cinza-10);
+  border-radius: 8px;
+  min-height: 32px;
+  padding: 8px;
+  outline: 0;
+  font-size: 14px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.container-flexivel {
+  display: flex;
+}
+
+.container-flexivel div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container-flexivel div:first-child {
+  margin-right: 4px;
+}
+
+.container-flexivel div:last-child {
+  margin-left: 4px;
+}
+
+.container-criar-kr {
+  padding: 24px 0;
   text-align: center;
+}
+
+.dropdown {
+  position: relative;
+  z-index: 1;
+}
+
+.dropdown__lista {
+  list-style-type: none;
+  padding: 0;
+  background-color: white;
+  position: absolute;
+  right: 0;
+  box-shadow: 4px 0 16px black;
+  width: 0px;
+  overflow: hidden;
+  transition: ease all 0.3s;
+}
+
+.dropdown__lista:hover,
+.dropdown__lista:focus,
+.dropdown__lista:focus-within {
+  width: 200px;
+}
+
+.dropdown__ativador:focus ~ .dropdown__lista {
+  width: 200px;
+}
+
+.dropdown__lista .botao {
+  background: none;
+  font-size: 14px;
+  border: none;
+  width: 100%;
+  border-radius: 0;
+  min-width: 200px;
+}
+
+.dropdown__lista .botao:hover,
+.dropdown__lista .botao:focus {
+  background-color: var(--cor-primaria-clara);
 }
