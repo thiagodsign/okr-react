@@ -6,9 +6,8 @@ export default class CriacaoDeObjetivo extends React.Component {
     document.getElementById(id).classList.remove('dialogo_aberto')
   }
 
-  salvarObjetivo(id) {
-    alert('Objetivo Salvo')
-    this.fecharDialogo(id);
+  salvarObjetivo() {
+    alert(this.objetivoNome);
   }
 
   render() {
