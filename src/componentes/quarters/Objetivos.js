@@ -1,6 +1,40 @@
 import React from 'react'
+import Krs from './Krs'
+
+const krs = [
+  {
+    id: 1,
+    nome: 'Nome da KR',
+    descricao: 'KR Descrição',
+    idDoObjetivo: 2,
+    valorInicial: 1,
+    valorFinal: 100,
+    valorAtual: 25
+  },
+  {
+    id: 2,
+    nome: 'Nome da KR',
+    descricao: 'KR Descrição',
+    idDoObjetivo: 2,
+    valorInicial: 1,
+    valorFinal: 100,
+    valorAtual: 30
+  },
+  {
+    id: 3,
+    nome: 'Nome da KR',
+    descricao: 'KR Descrição',
+    idDoObjetivo: 1,
+    valorInicial: 1,
+    valorFinal: 100,
+    valorAtual: 30
+  }
+]
+
 
 export default function Objetivos(props) {
+  const filtrarKrsPorObjetivo = kr => kr.idDoObjetivo === props.objetivo.id;
+
   return (
     <section className="sessao" key={props.objetivo.id}>
       <div className="sessao__cabecalho">
@@ -30,6 +64,17 @@ export default function Objetivos(props) {
           </div>
         </div>
       </div>
+
+      {
+        krs.filter(filtrarKrsPorObjetivo).map(kr => {
+          return (
+            <Krs kr={kr}
+              valorInicial={kr.valorInicial}
+              valorAtual={kr.valorAtual}
+              valorFinal={kr.valorFinal} />
+          )
+        })
+      }
     </section>
   )
 }
