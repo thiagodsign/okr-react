@@ -1,5 +1,5 @@
 import React from "react";
-import Cabecalho from "./componentes/Cabecalho";
+import Cabecalho from "./componentes/cabecalho/Cabecalho";
 import "./styles.css";
 
 export default function App() {
