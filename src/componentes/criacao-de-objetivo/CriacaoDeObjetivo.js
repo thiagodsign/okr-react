@@ -66,8 +66,8 @@ export default class CriacaoDeObjetivo extends React.Component {
         </div>
 
         <div className="dialogo__rodape">
-          <Botao texto="Cancelar" funcao={() => this.criarQuarter()} />
-          <Botao type="submit" texto="Salvar objetivo" funcao={() => this.criarObjetivo()} />
+          <Botao icone='x-circle' texto="Cancelar" funcao={() => this.fecharDialogo('dialogoObjetivo')} />
+          <Botao icone='plus-circle' type="submit" texto="Salvar objetivo" funcao={() => this.criarObjetivo()} />
         </div>
       </div>
     );

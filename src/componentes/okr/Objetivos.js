@@ -1,9 +1,14 @@
 import React from 'react'
 import Krs from './Krs'
+import Botao from '../botao/Botao'
 
 export default function Objetivos(props) {
   const filtrarKrsPorObjetivo = kr => kr.idDoObjetivo === props.objetivo.id;
-  
+
+  const novaKr = () => {
+    document.getElementById('dialogoKr').classList.add('dialogo_aberto')
+  }
+
   return (
     <section className="sessao">
       <div className="sessao__cabecalho">
@@ -34,17 +39,23 @@ export default function Objetivos(props) {
         </div>
       </div>
 
-      {
-        props.okr.krs.filter(filtrarKrsPorObjetivo).map(kr => {
-          return (
-            <Krs key={kr.id}
-              kr={kr}
-              valorInicial={kr.valorInicial}
-              valorAtual={kr.valorAtual}
-              valorFinal={kr.valorFinal} />
-          )
-        })
-      }
+      <div className="sessao__conteudo">
+        {
+          props.okr.krs.filter(filtrarKrsPorObjetivo).map(kr => {
+            return (
+              <Krs key={kr.id}
+                kr={kr}
+                valorInicial={kr.valorInicial}
+                valorAtual={kr.valorAtual}
+                valorFinal={kr.valorFinal} />
+            )
+          })
+        }
+
+        <div className="container-criar-kr">
+          <Botao texto="Adicionar KR" icone="plus" funcao={() => novaKr()} />
+        </div>
+      </div>
     </section>
   )
 }
