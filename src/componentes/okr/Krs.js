@@ -5,7 +5,7 @@ export default function Krs(props) {
     return ((props.kr.valorAtual - props.kr.valorInicial) / (props.kr.valorFinal - props.kr.valorInicial) * 100).toFixed(1) + '%'
   }
   return (
-    <div className="sessao__conteudo" key={props.kr.id}>
+    <div className="sessao__conteudo">
       <div className="sessao__item"
         title=" Clique para fazer checkin">
         <div className="sessao__conteudo-primario-do-item">

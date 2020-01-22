@@ -3,9 +3,9 @@ import Krs from './Krs'
 
 export default function Objetivos(props) {
   const filtrarKrsPorObjetivo = kr => kr.idDoObjetivo === props.objetivo.id;
-
+  
   return (
-    <section className="sessao" key={props.objetivo.id}>
+    <section className="sessao">
       <div className="sessao__cabecalho">
         <div className="sessao__cabecalho-container-primario">
           <p className="texto texto_cinza texto_espacado">OBJETIVO</p>
@@ -37,7 +37,8 @@ export default function Objetivos(props) {
       {
         props.okr.krs.filter(filtrarKrsPorObjetivo).map(kr => {
           return (
-            <Krs kr={kr}
+            <Krs key={kr.id}
+              kr={kr}
               valorInicial={kr.valorInicial}
               valorAtual={kr.valorAtual}
               valorFinal={kr.valorFinal} />

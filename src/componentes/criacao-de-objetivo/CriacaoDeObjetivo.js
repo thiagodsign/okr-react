@@ -2,36 +2,49 @@ import React from 'react'
 import Botao from '../botao/Botao'
 
 export default class CriacaoDeObjetivo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      okr: {
+        quarters: [],
+        objetivos: [],
+        krs: []
+      }
+    }
+  }
+
+  componentDidMount() {
+    window.firebase.database().ref('okr/').once('value').then((snapshot) => {
+      this.setState({ okr: (snapshot.val() && snapshot.val()) })
+    })
+  }
+
   fecharDialogo(id) {
     document.getElementById(id).classList.remove('dialogo_aberto')
   }
 
-  salvarObjetivo() {
-    alert(this.objetivoNome);
+  criarObjetivo() {
+    let idDoObjetivo;
+
+    if (this.state.okr.objetivos && this.state.okr.objetivos.length) {
+      idDoObjetivo = this.state.okr.objetivos.length
+    } else {
+      idDoObjetivo = 0
+    }
+
+    let nome = document.getElementById('nomeDoObjetivo').value
+    let idQuarter = document.getElementById('selecaoQuarter').value
+    let descricao = document.getElementById('descricaoDoObjetivo').value
+
+    window.firebase.database().ref('okr/objetivos/' + idDoObjetivo + '/').update({
+      id: idDoObjetivo + 1,
+      nome: nome,
+      descricao: descricao,
+      idDoQuarter: Number(idQuarter)
+    }).then(() => {
+      window.location.reload();
+    })
   }
-
-  // criarObjetivo() {
-  //   let idDoObjetivo;
-
-  //   if (okr.objetivos && okr.objetivos.length) {
-  //     idDoObjetivo = okr.objetivos.length
-  //   } else {
-  //     idDoObjetivo = 0
-  //   }
-
-  //   let nome = document.getElementById('nomeDoObjetivo').value
-  //   let idQuarter = document.getElementById('selecaoQuarter').value
-  //   let descricao = document.getElementById('descricaoDoObjetivo').value
-
-  //   firebase.database().ref('okr/objetivos/' + idDoObjetivo + '/').update({
-  //     id: idDoObjetivo + 1,
-  //     nome: nome,
-  //     descricao: descricao,
-  //     idDoQuarter: Number(idQuarter)
-  //   }).then(() => {
-  //     window.location.reload()
-  //   })
-  // }
 
   render() {
     return (
@@ -54,7 +67,7 @@ export default class CriacaoDeObjetivo extends React.Component {
 
         <div className="dialogo__rodape">
           <Botao texto="Cancelar" funcao={() => this.fecharDialogo('dialogoObjetivo')} />
-          <Botao type="submit" texto="Salvar objetivo" funcao={() => this.salvarObjetivo('dialogoObjetivo')} />
+          <Botao type="submit" texto="Salvar objetivo" funcao={() => this.criarObjetivo()} />
         </div>
       </div>
     );
