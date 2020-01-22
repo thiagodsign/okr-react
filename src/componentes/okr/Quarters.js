@@ -8,7 +8,7 @@ export default function Quarters(props) {
       <h2 className="titulo">{props.quarter.nome}</h2>
 
       {
-        okr.objetivos.map(objetivo => (
+        okr.objetivos.filter(objetivo => objetivo.idDoQuarter === props.quarter.id).map(objetivo => (
           <Objetivos key={objetivo.id} objetivo={objetivo} okr={okr} />
         ))
       }

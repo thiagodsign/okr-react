@@ -53,7 +53,8 @@ export default class CriacaoDeObjetivo extends React.Component {
           <form className="formulario" id="formularioObjetivo">
             <label htmlFor="quarter">Quarter</label>
             <select name="selecaoQuarter" id="selecaoQuarter">
-              <option value="1">Quarter 1 - 2019</option>
+              <option value="1">Quarter 1 - 2020</option>
+              <option value="2">Quarter 2 - 2020</option>
             </select>
 
             <label htmlFor="nomeDoObjetivo">Nome do objetivo</label>
@@ -64,9 +65,8 @@ export default class CriacaoDeObjetivo extends React.Component {
           </form>
         </div>
 
-
         <div className="dialogo__rodape">
-          <Botao texto="Cancelar" funcao={() => this.fecharDialogo('dialogoObjetivo')} />
+          <Botao texto="Cancelar" funcao={() => this.criarQuarter()} />
           <Botao type="submit" texto="Salvar objetivo" funcao={() => this.criarObjetivo()} />
         </div>
       </div>
