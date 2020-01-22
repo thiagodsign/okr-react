@@ -29,7 +29,7 @@ export default function Objetivos() {
   ]
 
   return (
-    <div className="container container_com-margem" v-for="quarter in okr.quarters">
+    <div className="container container_com-margem">
       <h2 className="titulo">Q1 2019</h2>
 
       {
