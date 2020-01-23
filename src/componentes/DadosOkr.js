@@ -16,6 +16,8 @@ export default class DadosOkr extends React.Component {
   componentDidMount() {
     window.firebase.database().ref('okr/').once('value').then((snapshot) => {
       this.setState({ okr: (snapshot.val() && snapshot.val()) })
+    }).then(() => {
+      window.feather.replace();
     })
   }
 

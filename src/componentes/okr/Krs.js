@@ -1,8 +1,13 @@
 import React from 'react'
+import CriacaoDeKr from '../criacao-de-kr/CriacaoDeKr'
 
 export default function Krs(props) {
   const porcentagemAtualDaKr = () => {
     return ((props.kr.valorAtual - props.kr.valorInicial) / (props.kr.valorFinal - props.kr.valorInicial) * 100).toFixed(1) + '%'
+  }
+
+  const abrirKrParaCheckin = () => {
+    CriacaoDeKr.valorFinal = props.kr.valorAtual
   }
 
   return (
@@ -22,7 +27,7 @@ export default function Krs(props) {
         </div>
       </div>
 
-      <button className="botao botao_com-icone botao_pequeno">
+      <button onClick={() => abrirKrParaCheckin()} className="botao botao_com-icone botao_pequeno">
         <i data-feather="map-pin"></i>
         Checkin
         </button>
