@@ -18,16 +18,16 @@ export default class CriacaoDeKr extends React.Component {
 
           <form className="formulario">
             <label htmlFor="inputKr">Insira o nome da sua Key Result</label>
-            <input type="text" id="inputKr" value={this.nomeDaKr} />
+            <input type="text" id="inputKr" />
 
             <label htmlFor="valorInicial">Valor inicial</label>
-            <input type="number" id="valorInicial" value={this.valorInicialDaKr} />
+            <input type="number" id="valorInicial" />
 
             <label htmlFor="valorFinal">Valor Final</label>
-            <input type="number" id="valorFinal" value={this.valorFinalDaKr} />
+            <input type="number" id="valorFinal" />
 
             <label htmlFor="valorAtual">Valor Atual</label>
-            <input type="number" id="valorAtual" value={this.valorAtualDaKr} />
+            <input type="number" id="valorAtual" />
           </form>
         </div>
 

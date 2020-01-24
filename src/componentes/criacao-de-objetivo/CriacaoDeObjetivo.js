@@ -5,17 +5,14 @@ export default class CriacaoDeObjetivo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      okr: {
-        quarters: [],
-        objetivos: [],
-        krs: []
-      }
+      quarters: {},
     }
   }
 
   componentDidMount() {
-    window.firebase.database().ref('okr/').once('value').then((snapshot) => {
-      this.setState({ okr: (snapshot.val() && snapshot.val()) })
+    window.firebase.database().ref('/').once('value').then((snapshot) => {
+      this.setState({ quarters: (snapshot.val() && snapshot.val()) })
+      console.log(this.state.quarters)
     })
   }
 
@@ -23,27 +20,27 @@ export default class CriacaoDeObjetivo extends React.Component {
     document.getElementById(id).classList.remove('dialogo_aberto')
   }
 
-  criarObjetivo() {
-    let idDoObjetivo;
-
-    if (this.state.okr.objetivos && this.state.okr.objetivos.length) {
-      idDoObjetivo = this.state.okr.objetivos.length
-    } else {
-      idDoObjetivo = 0
+  criarDados() {
+    const path = 'quarters/';
+    const dadosQuarter = {
+      ano: 2020,
+      nome: 'Q1 / 2019',
+      periodoDoAno: 1
+      // objetivos: [{
+      //   nome: 'Objetivo Nome',
+      //   descricao: 'Objetivo Descrição',
+      //   idDoQuarter: 2
+      // }],
+      // krs: [{
+      //   nome: 'Nome da KR',
+      //   descricao: 'KR Descrição',
+      //   idDoObjetivo: 2,
+      //   valorInicial: 1,
+      //   valorFinal: 100,
+      //   valorAtual: 25
+      // }]
     }
-
-    let nome = document.getElementById('nomeDoObjetivo').value
-    let idQuarter = document.getElementById('selecaoQuarter').value
-    let descricao = document.getElementById('descricaoDoObjetivo').value
-
-    window.firebase.database().ref('okr/objetivos/' + idDoObjetivo + '/').update({
-      id: idDoObjetivo + 1,
-      nome: nome,
-      descricao: descricao,
-      idDoQuarter: Number(idQuarter)
-    }).then(() => {
-      window.location.reload();
-    })
+    window.firebase.database().ref(path).push(dadosQuarter)
   }
 
   render() {
@@ -67,7 +64,7 @@ export default class CriacaoDeObjetivo extends React.Component {
 
         <div className="dialogo__rodape">
           <Botao icone='x-circle' texto="Cancelar" funcao={() => this.fecharDialogo('dialogoObjetivo')} />
-          <Botao icone='plus-circle' type="submit" texto="Salvar objetivo" funcao={() => this.criarObjetivo()} />
+          <Botao icone='plus-circle' type="submit" texto="Salvar objetivo" funcao={() => this.criarDados()} />
         </div>
       </div>
     );

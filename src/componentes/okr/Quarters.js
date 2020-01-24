@@ -6,12 +6,12 @@ export default function Quarters(props) {
   return (
     <div className="container container_com-margem">
       <h2 className="titulo">{props.quarter.nome}</h2>
-
+{/* 
       {
         okr.objetivos.filter(objetivo => objetivo.idDoQuarter === props.quarter.id).map(objetivo => (
           <Objetivos key={objetivo.id} objetivo={objetivo} okr={okr} />
         ))
-      }
+      } */}
     </div>
   )
 }
